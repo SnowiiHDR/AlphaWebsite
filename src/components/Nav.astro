@@ -1,0 +1,70 @@
+---
+const links = [
+  { href: "/founding", label: "The Founding" },
+  { href: "/fraternity", label: "Fraternity" },
+  { href: "/chapter", label: "Alpha Chapter" },
+  { href: "/house-of-alpha", label: "House of Alpha" },
+  { href: "/brothers", label: "Brothers" },
+  { href: "/events", label: "Events" },
+  { href: "/posts", label: "Posts" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class="border-b border-alpha-black/10 bg-alpha-cream/95 backdrop-blur sticky top-0 z-40">
+  <div class="container-wide flex items-center justify-between py-5">
+    <a href="/" class="flex items-center gap-3 group">
+      <span
+        class="inline-flex h-10 w-10 items-center justify-center border border-alpha-black text-alpha-black font-serif text-xl"
+        aria-hidden="true"
+      >
+        &Alpha;
+      </span>
+      <span class="flex flex-col leading-none">
+        <span class="font-serif text-lg text-alpha-black">The Alpha Chapter</span>
+        <span class="eyebrow mt-1">Alpha Phi Alpha · 1906</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-7">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="font-sans text-xs uppercase tracking-widest text-alpha-ink/80 transition hover:text-alpha-gold-600"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <details class="lg:hidden relative">
+      <summary class="list-none cursor-pointer p-2" aria-label="Open menu">
+        <span class="block h-0.5 w-6 bg-alpha-black mb-1.5"></span>
+        <span class="block h-0.5 w-6 bg-alpha-black mb-1.5"></span>
+        <span class="block h-0.5 w-6 bg-alpha-black"></span>
+      </summary>
+      <ul
+        class="absolute right-0 top-12 w-64 bg-alpha-cream border border-alpha-black/10 shadow-xl py-2"
+      >
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="block px-5 py-3 font-sans text-xs uppercase tracking-widest text-alpha-ink hover:bg-alpha-black hover:text-alpha-cream"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+</header>

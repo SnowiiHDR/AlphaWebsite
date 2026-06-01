@@ -1,0 +1,50 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-alpha-cream text-alpha-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-alpha-black;
+  }
+
+  ::selection {
+    background-color: theme("colors.alpha-gold.300");
+    color: theme("colors.alpha-black");
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans uppercase tracking-widest text-xs text-alpha-gold-600 font-medium;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-wide px-6 sm:px-8 lg:px-12;
+  }
+
+  .container-prose {
+    @apply mx-auto max-w-prose px-6;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-none border border-alpha-black bg-alpha-black px-6 py-3 font-sans text-sm uppercase tracking-widest text-alpha-cream transition hover:bg-alpha-gold-400 hover:border-alpha-gold-400 hover:text-alpha-black;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-none border border-alpha-black/40 px-6 py-3 font-sans text-sm uppercase tracking-widest text-alpha-black transition hover:bg-alpha-black hover:text-alpha-cream;
+  }
+}
