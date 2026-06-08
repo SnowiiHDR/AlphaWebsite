@@ -1,12 +1,10 @@
 ---
 const links = [
-  { href: "/founding", label: "The Founding" },
-  { href: "/fraternity", label: "Fraternity" },
+  { href: "/founding", label: "Founding" },
   { href: "/chapter", label: "Alpha Chapter" },
   { href: "/house-of-alpha", label: "House of Alpha" },
   { href: "/brothers", label: "Brothers" },
   { href: "/events", label: "Events" },
-  { href: "/posts", label: "Posts" },
   { href: "/contact", label: "Contact" },
 ];
 ---
@@ -14,20 +12,11 @@ const links = [
 <header class="border-b border-alpha-black/10 bg-alpha-cream/95 backdrop-blur sticky top-0 z-40">
   <div class="container-wide flex items-center justify-between py-5">
     <a href="/" class="flex items-center gap-3 group">
-      <span
-        class="inline-flex h-10 w-10 items-center justify-center border border-alpha-black text-alpha-black font-serif text-xl"
-        aria-hidden="true"
-      >
-        &Alpha;
-      </span>
-      <span class="flex flex-col leading-none">
-        <span class="font-serif text-lg text-alpha-black">The Alpha Chapter</span>
-        <span class="eyebrow mt-1">Alpha Phi Alpha · 1906</span>
-      </span>
+      <img src="/CLogo.svg" alt="Alpha Chapter" class="h-20 w-20" />
     </a>
 
-    <nav aria-label="Primary" class="hidden lg:block">
-      <ul class="flex items-center gap-7">
+    <nav aria-label="Primary" class="hidden lg:block flex-1 ml-12">
+      <ul class="flex items-center justify-between">
         {
           links.map((link) => (
             <li>

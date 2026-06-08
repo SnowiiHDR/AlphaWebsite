@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://alpha-chapter.example.com", // TODO: replace with real domain
+  site: "https://alpha-website-nu.vercel.app/",
   integrations: [
     tailwind({
       applyBaseStyles: false,

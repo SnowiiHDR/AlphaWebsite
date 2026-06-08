@@ -13,16 +13,16 @@ const jewels = [
 
 const pillars = [
   {
-    title: "The First.",
+    title: "Tidbit 1.",
     body: "On December 4, 1906, seven men at Cornell founded the first intercollegiate fraternity for African American men. The Alpha Chapter is the chapter where it began.",
   },
   {
-    title: "The House.",
-    body: "In 2025, the House of Alpha Leadership Institute opened in Cornell Heights — the first leadership institute of its kind in the Divine Nine.",
+    title: "Something",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent egestas tristique nulla, sit amet facilisis leo tincidunt sit amet. Nulla in enim congue, iaculis risus vel, eleifend lectus",
   },
   {
-    title: "The Aims.",
-    body: "Manly Deeds. Scholarship. Love For All Mankind. Three aims, one purpose — service to the community and one another.",
+    title: "Another thing.",
+    body: "Manly Deeds. Scholarship. Love For All Mankind.",
   },
 ];
 ---
@@ -34,30 +34,29 @@ const pillars = [
       class="absolute inset-0 opacity-[0.06] pointer-events-none select-none"
       aria-hidden="true"
     >
-      <div class="absolute inset-0 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">  
         <span class="font-serif text-[40vw] leading-none text-alpha-gold-400"
           >ΑΦΑ</span
         >
       </div>
     </div>
 
-    <div class="container-wide relative py-28 sm:py-36 lg:py-44">
+    <div class="container-wide relative py-16 sm:py-20 lg:py-24">
       <p class="eyebrow text-alpha-gold-300">Est. December 4, 1906 · Cornell University</p>
       <h1
-        class="mt-6 font-serif text-5xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight"
+        class="mt-4 font-serif text-5xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight"
       >
-        The First Chapter.<br />
-        <span class="text-alpha-gold-300">The Original House.</span>
+        The Uppermost House.<br />
       </h1>
-      <p class="mt-8 max-w-2xl text-lg sm:text-xl text-alpha-cream/80 font-serif">
-        The Alpha Chapter of Alpha Phi Alpha Fraternity, Inc. — the birthplace of
-        Black Greek-letter life in America, and the home of seven men whose vision
-        still moves the world.
+      <p class="mt-6 max-w-2xl text-lg sm:text-xl text-alpha-cream/80 font-serif">
+        The Alpha Chapter of Alpha Phi Alpha Fraternity, Inc. — Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Praesent egestas tristique nulla,
+        sit amet facilisis leo tincidunt sit amet. Nulla in enim congue.
       </p>
 
-      <div class="mt-12 flex flex-wrap gap-4">
+      <div class="mt-8 flex flex-wrap gap-4">
         <a href="/founding" class="btn-primary bg-alpha-gold-400 border-alpha-gold-400 text-alpha-black hover:bg-alpha-cream hover:border-alpha-cream">
-          Meet the Seven Jewels
+          The Seven Jewels
         </a>
         <a href="/house-of-alpha" class="btn-ghost border-alpha-cream/40 text-alpha-cream hover:bg-alpha-cream hover:text-alpha-black">
           The House of Alpha
@@ -65,7 +64,7 @@ const pillars = [
       </div>
 
       <div
-        class="mt-20 grid grid-cols-3 gap-6 max-w-3xl border-t border-alpha-cream/15 pt-8"
+        class="mt-12 grid grid-cols-3 gap-6 max-w-3xl border-t border-alpha-cream/15 pt-6"
       >
         <div>
           <p class="eyebrow text-alpha-gold-300">First of All</p>
@@ -81,14 +80,14 @@ const pillars = [
   </section>
 
   <!-- THREE PILLARS ===================================================== -->
-  <section class="bg-alpha-cream py-24 sm:py-32">
+  <section class="bg-alpha-cream py-16 sm:py-20">
     <div class="container-wide">
-      <div class="grid gap-12 md:grid-cols-3">
+      <div class="grid gap-8 md:grid-cols-3">
         {
           pillars.map((p) => (
-            <div class="border-t-2 border-alpha-gold-400 pt-8">
+            <div class="border-t-2 border-alpha-gold-400 pt-6">
               <h2 class="font-serif text-3xl">{p.title}</h2>
-              <p class="mt-4 text-alpha-ink/80 leading-relaxed">{p.body}</p>
+              <p class="mt-3 text-alpha-ink/80 leading-relaxed">{p.body}</p>
             </div>
           ))
         }
@@ -97,8 +96,8 @@ const pillars = [
   </section>
 
   <!-- FOUNDING NARRATIVE ================================================ -->
-  <section class="bg-alpha-black text-alpha-cream py-24 sm:py-32 relative">
-    <div class="container-wide grid lg:grid-cols-12 gap-12">
+  <section class="bg-alpha-black text-alpha-cream py-16 sm:py-20 relative">
+    <div class="container-wide grid lg:grid-cols-12 gap-10">
       <div class="lg:col-span-5">
         <p class="eyebrow text-alpha-gold-300">The Story</p>
         <h2 class="mt-4 font-serif text-4xl sm:text-5xl leading-tight">
@@ -108,24 +107,13 @@ const pillars = [
       <div class="lg:col-span-7 space-y-6 text-alpha-cream/85 leading-relaxed">
         <p>
           In the 1905–1906 school year, a small group of African American
-          students at Cornell met as a literary and social studies club —
-          seeking refuge and rigor in a place that often offered them neither.
+          students at Cornell met as a literary society and social studies club —
+          seeking refuge.
         </p>
         <p>
           On December 4, 1906, that gathering became Alpha Phi Alpha Fraternity,
           the first intercollegiate Greek-letter organization established by men
-          of African descent. Out of the Alpha Chapter came the General
-          Convention, the
-          <em>Go-to-High School, Go-to-College</em> program, and an unbroken
-          chain of leaders — including
-          <span class="text-alpha-gold-300">
-            Martin Luther King Jr., Thurgood Marshall, W.E.B. Du Bois, Duke
-            Ellington, and Jesse Owens.
-          </span>
-        </p>
-        <p>
-          More than a century later, the chapter still resides at the place it
-          began. Its work continues.
+          of African descent.
         </p>
         <div class="pt-4">
           <a
@@ -140,9 +128,9 @@ const pillars = [
   </section>
 
   <!-- SEVEN JEWELS PREVIEW ============================================== -->
-  <section class="bg-alpha-cream py-24 sm:py-32">
+  <section class="bg-alpha-cream py-16 sm:py-20">
     <div class="container-wide">
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-12">
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-8">
         <div>
           <p class="eyebrow">The Founders</p>
           <h2 class="mt-2 font-serif text-4xl sm:text-5xl">
@@ -171,8 +159,8 @@ const pillars = [
   </section>
 
   <!-- HOUSE OF ALPHA ==================================================== -->
-  <section class="bg-alpha-black text-alpha-cream py-24 sm:py-32">
-    <div class="container-wide grid lg:grid-cols-12 gap-12 items-center">
+  <section class="bg-alpha-black text-alpha-cream py-16 sm:py-20">
+    <div class="container-wide grid lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-7">
         <p class="eyebrow text-alpha-gold-300">Opened October 2025</p>
         <h2 class="mt-4 font-serif text-4xl sm:text-5xl leading-tight">
@@ -185,7 +173,7 @@ const pillars = [
           around seven pillars of emerging leadership. It is the first
           institute of its kind in the Divine Nine.
         </p>
-        <div class="mt-10">
+        <div class="mt-8">
           <a
             href="/house-of-alpha"
             class="btn-primary bg-alpha-gold-400 border-alpha-gold-400 text-alpha-black hover:bg-alpha-cream hover:border-alpha-cream"
@@ -205,18 +193,18 @@ const pillars = [
   </section>
 
   <!-- CTA: GET INVOLVED ================================================= -->
-  <section class="bg-alpha-cream py-24 sm:py-32">
+  <section class="bg-alpha-cream py-16 sm:py-20">
     <div class="container-wide max-w-4xl text-center">
       <p class="eyebrow">Interested in Alpha?</p>
-      <h2 class="mt-4 font-serif text-4xl sm:text-5xl">
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl">
         Stay connected with the Alpha Chapter.
       </h2>
-      <p class="mt-6 text-alpha-ink/80 leading-relaxed max-w-2xl mx-auto">
+      <p class="mt-4 text-alpha-ink/80 leading-relaxed max-w-2xl mx-auto">
         Whether you're a Cornell student, an Alpha alumnus, or a member of the
         community, we'd be glad to hear from you. Join the listserv for chapter
         announcements, events, and service opportunities.
       </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
         <a href="/contact" class="btn-primary">Get in touch</a>
         <a href="https://instagram.com/" class="btn-ghost">Follow on Instagram</a>
       </div>
