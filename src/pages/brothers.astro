@@ -1,0 +1,205 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+type Brother = {
+  name: string;
+  major: string;
+  grade: string;
+  position: string;
+  lineNumber: number;
+  image?: string;
+};
+
+type BrotherClass = {
+  name: string;
+  season: string;
+  brothers: Brother[];
+};
+
+const brotherClasses: BrotherClass[] = [
+  {
+    name: "Authority",
+    season: "Spring 2026",
+    brothers: [
+      {
+        name: "Elliot Rosa",
+        major: "Economics",
+        grade: "Sophomore",
+        position: "Treasurer",
+        lineNumber: 1,
+      },
+      {
+        name: "Jacob Green",
+        major: "AEM",
+        grade: "Junior",
+        position: "",
+        lineNumber: 2,
+      },
+      {
+        name: "Zion Singleton",
+        major: "Major",
+        grade: "Senior",
+        position: "Chapter Position",
+        lineNumber: 3,
+      },
+      {
+        name: "Noah Hoereth",
+        major: "Major",
+        grade: "Sophomore",
+        position: "Chapter Position",
+        lineNumber: 4,
+      },
+    ],
+  },
+  {
+    name: "Exodus",
+    season: "Fall 2025",
+    brothers: [
+      {
+        name: "Osiel Iglesias-Faez",
+        major: "Major",
+        grade: "Junior",
+        position: "Chapter Position",
+        lineNumber: 1,
+        image: "/faez.png",
+      },
+      {
+        name: "Tyler Japal",
+        major: "Major",
+        grade: "Senior",
+        position: "Chapter Position",
+        lineNumber: 2,
+        image: "/japal.png",
+      },
+    ],
+  },
+  {
+    name: "Nebula",
+    season: "Spring 2024",
+    brothers: [
+      {
+        name: "Jeremy Henderson",
+        major: "Major",
+        grade: "Senior",
+        position: "Chapter Position",
+        lineNumber: 1,
+        image: "/henderson.png",
+      },
+      {
+        name: "Christian Flournoy",
+        major: "Major",
+        grade: "Senior",
+        position: "Chapter Position",
+        lineNumber: 3,
+        image: "/flournoy.png",
+      },
+      {
+        name: "Colin Michael",
+        major: "Major",
+        grade: "Senior",
+        position: "Chapter Position",
+        lineNumber: 4,
+        image: "/michael.png",
+      },
+    ],
+  },
+];
+
+const activeBrotherCount = brotherClasses.reduce(
+  (total, brotherClass) => total + brotherClass.brothers.length,
+  0,
+);
+---
+
+<Layout
+  title="Brothers — The Alpha Chapter"
+  description="Meet the brothers of the Alpha Chapter of Alpha Phi Alpha Fraternity, Inc. at Cornell University."
+>
+  <section class="bg-alpha-black text-alpha-cream">
+    <div class="container-wide py-16 sm:py-20 lg:py-24">
+      <p class="eyebrow text-alpha-gold-300">The Brotherhood</p>
+      <h1 class="mt-4 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl lg:text-7xl">
+        Brothers of the Alpha Chapter.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-alpha-cream/80">
+        Meet the men carrying forward the chapter's legacy of scholarship,
+        service, leadership, and love for all mankind at Cornell and beyond.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-alpha-cream pb-16 sm:pb-20">
+    <div class="container-wide">
+      <div class="space-y-16">
+        {
+          brotherClasses.map((brotherClass) => (
+            <section class="border-t border-alpha-black/10 pt-10">
+              <div class="mb-8">
+                <div>
+                  <h2 class="mt-2 font-serif text-5xl leading-none text-alpha-black sm:text-6xl">
+                    {brotherClass.name}
+                  </h2>
+                  <p class="eyebrow mt-4">{brotherClass.season}</p>
+                </div>
+              </div>
+
+              <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                {brotherClass.brothers.map((brother) => (
+                  <article class="group border border-alpha-black/10 bg-alpha-cream transition hover:border-alpha-gold-400">
+                    {brother.image ? (
+                      <img
+                        src={brother.image}
+                        alt={brother.name}
+                        class="aspect-[4/5] w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="flex aspect-[4/5] items-center justify-center bg-alpha-black text-alpha-gold-300">
+                        <span class="font-serif text-6xl leading-none">ΑΦΑ</span>
+                      </div>
+                    )}
+                    <div class="p-5">
+                      <h3 class="font-serif text-3xl leading-tight text-alpha-black">
+                        {brother.name}
+                      </h3>
+                      <dl class="mt-4 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-alpha-black/10 pt-4 text-sm text-alpha-ink/75">
+                        <div>
+                          <dt class="eyebrow text-[0.65rem]">Line Number</dt>
+                          <dd class="mt-1">#{brother.lineNumber}</dd>
+                        </div>
+                        <div>
+                          <dt class="eyebrow text-[0.65rem]">Major</dt>
+                          <dd class="mt-1">{brother.major}</dd>
+                        </div>
+                        <div>
+                          <dt class="eyebrow text-[0.65rem]">Grade</dt>
+                          <dd class="mt-1">{brother.grade}</dd>
+                        </div>
+                        <div>
+                          <dt class="eyebrow text-[0.65rem]">Position</dt>
+                          <dd class="mt-1">{brother.position}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+        <section class="border-t border-alpha-black/10 pt-10">
+          <div class="max-w-3xl">
+            <p class="eyebrow">Alumni</p>
+            <h2 class="mt-2 font-serif text-4xl leading-tight sm:text-5xl">
+              Older classes continue the lineage beyond campus.
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-alpha-ink/80">
+              Graduated classes can be added here later as a separate alumni
+              archive.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</Layout>

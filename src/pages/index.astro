@@ -2,14 +2,16 @@
 import Layout from "@/layouts/Layout.astro";
 
 const jewels = [
-  { name: "Henry Arthur Callis", note: "" },
-  { name: "Charles Henry Chapman", note: "" },
-  { name: "Eugene Kinckle Jones", note: "" },
-  { name: "George Biddle Kelley", note: "" },
-  { name: "Nathaniel Allison Murray", note: "" },
-  { name: "Robert Harold Ogle", note: "" },
-  { name: "Vertner Woodson Tandy", note: "" },
+  "Henry Arthur Callis",
+  "Charles Henry Chapman",
+  "Eugene Kinckle Jones",
+  "George Biddle Kelley",
+  "Nathaniel Allison Murray",
+  "Robert Harold Ogle",
+  "Vertner Woodson Tandy",
 ];
+
+const jewelNames = jewels.join(", ");
 
 const pillars = [
   {
@@ -44,7 +46,7 @@ const pillars = [
     <div class="container-wide relative py-16 sm:py-20 lg:py-24">
       <p class="eyebrow text-alpha-gold-300">Est. December 4, 1906 · Cornell University</p>
       <h1
-        class="mt-4 font-serif text-5xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight"
+        class="mt-4 font-serif text-4xl sm:text-6xl lg:text-7xl leading-[0.98]"
       >
         The Uppermost House.<br />
       </h1>
@@ -129,32 +131,20 @@ const pillars = [
 
   <!-- SEVEN JEWELS PREVIEW ============================================== -->
   <section class="bg-alpha-cream py-16 sm:py-20">
-    <div class="container-wide">
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-8">
-        <div>
-          <p class="eyebrow">The Founders</p>
-          <h2 class="mt-2 font-serif text-4xl sm:text-5xl">
-            The Seven Jewels
-          </h2>
+    <div class="container-wide max-w-4xl">
+      <div class="max-w-3xl">
+        <h2 class="font-serif text-4xl sm:text-5xl leading-tight">
+          The Seven Jewels
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-alpha-ink/80">
+          The founders of Alpha Phi Alpha Fraternity, Inc. are {jewelNames}.
+          Their stories mark the beginning of the Alpha Chapter and the
+          brotherhood it established at Cornell.
+        </p>
+        <div class="mt-8">
+          <a href="/founding" class="btn-ghost">Read Their Stories</a>
         </div>
-        <a href="/founding" class="btn-ghost">Read their stories</a>
       </div>
-
-      <ol class="grid gap-px bg-alpha-black/10 sm:grid-cols-2 lg:grid-cols-4 border border-alpha-black/10">
-        {
-          jewels.map((j, i) => (
-            <li class="bg-alpha-cream p-6 sm:p-8 flex flex-col gap-3">
-              <span class="font-serif text-3xl text-alpha-gold-500">
-                0{i + 1}
-              </span>
-              <span class="font-serif text-xl leading-tight text-alpha-black">
-                {j.name}
-              </span>
-              <span class="eyebrow">{j.note}</span>
-            </li>
-          ))
-        }
-      </ol>
     </div>
   </section>
 
