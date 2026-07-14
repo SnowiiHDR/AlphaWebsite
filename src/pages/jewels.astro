@@ -21,7 +21,7 @@ const jewels: Jewel[] = [
     name: "Charles Henry Chapman",
     title: "The Educator",
     bio: "Chapman entered higher education as a professor of Agriculture at FAMU. A beloved educator, he was instrumental in early organization and served as the first chairman of the Committees on Initiation and Organization.",
-    legacy: "He is widely remembered as the first Jewel to pass on to the Omega Chapter.",
+    legacy: "Legacy",
     image: "/jewels/CHC.png"
   },
   {
@@ -218,8 +218,17 @@ const jewels: Jewel[] = [
     };
 
     // State management rendering updates to all matching components
+    // State management rendering updates to all matching components
     const updateUIState = () => {
-  i 
+      toggleButtons.forEach(btn => {
+        const icon = btn.querySelector('.play-icon');
+        const text = btn.querySelector('.play-text');
+        if (icon) icon.textContent = isPlaying ? '❚❚' : '▶▶';
+        if (text) text.textContent = isPlaying ? 'Pause' : 'Autoplay';
+      });
+    };
+
+    const startAutoSlide = () => {
 
     const startAutoSlide = () => {
       if (!autoSlideInterval) {
