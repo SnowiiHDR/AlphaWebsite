@@ -1,0 +1,272 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+type Jewel = {
+  name: string;
+  title: string;
+  bio: string;
+  legacy: string;
+  image?: string;
+};
+
+const jewels: Jewel[] = [
+  {
+    name: "Henry Arthur Callis",
+    title: "The Physician and Philosopher",
+    bio: "A practicing physician, Callis became a professor of Medicine at Howard University and a prolific contributor to medical journals. He was often regarded as the philosopher of the founders and held a deep interest in the forward progress of the fraternity.",
+    legacy: "He was the only founder to become General President of the fraternity.",
+    image: "/jewels/HAC.png"
+  },
+  {
+    name: "Charles Henry Chapman",
+    title: "The Educator",
+    bio: "Chapman entered higher education as a professor of Agriculture at FAMU. A beloved educator, he was instrumental in early organization and served as the first chairman of the Committees on Initiation and Organization.",
+    legacy: "He is widely remembered as the first Jewel to pass on to the Omega Chapter.",
+    image: "/jewels/CHC.png"
+  },
+  {
+    name: "Eugene Kinckle Jones",
+    title: "The Diplomat and Executive",
+    bio: "Jones became the first Executive Secretary of the National Urban League. His exceptional organizational skills helped guide the early expansion of the fraternity, helping to establish the Beta, Gamma, and Delta chapters.",
+    legacy: "He deeply influenced national social work and early civil rights infrastructure.",
+    image: "/jewels/EKJ.png"
+  },
+  {
+    name: "George Biddle Kelley",
+    title: "The Engineer",
+    bio: "Kelley became a registered civil engineer in the state of New York, breaking significant barriers in the field. He maintained active, lifelong ties with Alpha Chapter affairs and community development in Troy, NY.",
+    legacy: "He served on the first committee to draft the fraternity's constitution.",
+    image: "/jewels/GBK.png"
+  },
+  {
+    name: "Nathaniel Allison Murray",
+    title: "The Scholar and Teacher",
+    bio: "Murray spent most of his career teaching at Armstrong Vocational High School in Washington, D.C. He was a dedicated member of the early organizational committees and attended many of the historic early conventions.",
+    legacy: "He served on the charter committee alongside Kelley to formalize the group.",
+    image: "/jewels/NAM.png"
+  },
+  {
+    name: "Robert Harold Ogle",
+    title: "The Professional Scribe",
+    bio: "Ogle entered a career in secretarial work and public service, notably working for the United States Senate Committee on Appropriations. He was the first secretary of the Alpha Chapter and meticulously logged the initial steps of the fraternity.",
+    legacy: "He proposed the fraternity's colors: Old Gold and Black.",
+    image: "/jewels/RHO.png"
+  },
+  {
+    name: "Vertner Woodson Tandy",
+    title: "The Architect",
+    bio: "Tandy became New York State's first registered Black architect. He designed magnificent structures, most notably 'Villa Lewaro,' the mansion for millionaire Madam C.J. Walker in Irvington-on-Hudson.",
+    legacy: "He served as the fraternity's first treasurer and designed the original initiate pin.",
+    image: "/jewels/VWT.png"
+  }
+];
+---
+
+<Layout
+  title="The Seven Jewels — The Alpha Chapter"
+  description="Honoring the seven visionary founders of Alpha Phi Alpha Fraternity, Inc., established at Cornell University."
+>
+  <section class="bg-alpha-black text-alpha-cream text-center">
+    <div class="container-wide py-16 lg:py-20">
+      <p class="eyebrow text-alpha-gold-300 tracking-widest">Our Founders</p>
+      <h1 class="mt-4 font-serif text-5xl sm:text-7xl tracking-tight">
+        The Seven Jewels.
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-alpha-cream py-12 lg:py-16 overflow-hidden">
+    <div class="container-wide relative">
+      
+      <div 
+        id="jewel-track"
+        class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth pb-4"
+      >
+        {
+          jewels.map((jewel, index) => (
+            <div class="w-full flex-shrink-0 snap-center">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch border border-alpha-black/10 bg-alpha-cream p-6 sm:p-10 shadow-sm">
+                
+                {/* Left Side: Photo Frame */}
+                <div class="lg:col-span-5">
+                  <div class="relative aspect-[4/5] bg-alpha-black border border-alpha-black/10 overflow-hidden h-full min-h-[300px]">
+                    {jewel.image ? (
+                      <img
+                        src={jewel.image}
+                        alt={jewel.name}
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="absolute inset-0 flex items-center justify-center text-alpha-gold-300 font-serif text-5xl">
+                        ΑΦΑ
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right Side: Narrative Text Details and Navigation Buttons */}
+                <div class="lg:col-span-7 flex flex-col justify-between">
+                  <div>
+                    <span class="text-[0.7rem] tracking-widest uppercase font-semibold text-alpha-gold-400 block mb-1">
+                      {jewel.title}
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-alpha-black tracking-tight leading-tight">
+                      {jewel.name}
+                    </h2>
+                    
+                    <div class="mt-4 h-px bg-alpha-black/10 w-16"></div>
+                    
+                    <p class="mt-4 text-base leading-relaxed text-alpha-ink/80 font-light">
+                      {jewel.bio}
+                    </p>
+                    
+                    <blockquote class="mt-6 border-l-2 border-alpha-gold-400 pl-4 py-1 bg-alpha-black/[0.02]">
+                     <p class="text-xs font-medium text-alpha-black italic">
+                        <span class="font-bold uppercase text-[0.6rem] tracking-wider text-alpha-gold-400 block not-italic mb-0.5">Historic Note</span>
+                        "{jewel.legacy}"
+                      </p>
+                    </blockquote>
+                  </div>
+
+                  {/* Operational Management Row inside the info panel */}
+                  <div class="mt-8 pt-4 border-t border-alpha-black/5 flex items-center justify-between">
+                    
+                    <div class="flex items-center space-x-3 text-alpha-ink/60">
+                      <span class="text-alpha-black/10">|</span>
+                      <button 
+                        class="toggle-playback-btn flex items-center gap-1.5 text-[11px] uppercase font-medium tracking-wider text-alpha-gold-400 transition"
+                        title="Toggle Auto Advance"
+                        >
+                        <span class="play-icon text-xs block">▶▶</span> 
+                        <span class="play-text">Autoplay</span>
+                        </button>
+                    </div>
+
+                    {/* Step Arrows */}
+                    <div class="flex items-center space-x-2">
+                      <button 
+                        class="prev-btn flex items-center justify-center w-10 h-10 border border-alpha-black/20 text-alpha-black hover:border-alpha-gold-400 hover:bg-alpha-black hover:text-alpha-cream transition duration-200"
+                        aria-label="Previous Jewel"
+                      >
+                        &#8592;
+                      </button>
+                      <button 
+                        class="next-btn flex items-center justify-center w-10 h-10 border border-alpha-black/20 text-alpha-black hover:border-alpha-gold-400 hover:bg-alpha-black hover:text-alpha-cream transition duration-200"
+                        aria-label="Next Jewel"
+                      >
+                        &#8594;
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  const track = document.getElementById('jewel-track') as HTMLDivElement;
+  const prevButtons = document.querySelectorAll('.prev-btn');
+  const nextButtons = document.querySelectorAll('.next-btn');
+  const toggleButtons = document.querySelectorAll('.toggle-playback-btn');
+  const stopButtons = document.querySelectorAll('.stop-playback-btn');
+
+  if (track) {
+    const gap = 24;
+    let autoSlideInterval: number | null = null;
+    let isPlaying = true;
+
+    const getSlideWidth = () => {
+      return track.firstElementChild?.getBoundingClientRect().width || 0;
+    };
+
+    const slideNext = () => {
+      const slideWidth = getSlideWidth();
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      
+      if (track.scrollLeft >= maxScroll - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: slideWidth + gap, behavior: 'smooth' });
+      }
+    };
+
+    const slidePrev = () => {
+      const slideWidth = getSlideWidth();
+      if (track.scrollLeft <= 10) {
+        track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: -(slideWidth + gap), behavior: 'smooth' });
+      }
+    };
+
+    // State management rendering updates to all matching components
+    const updateUIState = () => {
+  i 
+
+    const startAutoSlide = () => {
+      if (!autoSlideInterval) {
+        autoSlideInterval = window.setInterval(slideNext, 5000);
+        isPlaying = true;
+        updateUIState();
+      }
+    };
+
+    const stopAutoSlide = () => {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+        isPlaying = false;
+        updateUIState();
+      }
+    };
+
+    // Global Click Listeners across duplicate layout slides
+    nextButtons.forEach(btn => btn.addEventListener('click', () => {
+      stopAutoSlide();
+      slideNext();
+    }));
+
+    prevButtons.forEach(btn => btn.addEventListener('click', () => {
+      stopAutoSlide();
+      slidePrev();
+    }));
+
+    toggleButtons.forEach(btn => btn.addEventListener('click', () => {
+      if (isPlaying) {
+        stopAutoSlide();
+      } else {
+        startAutoSlide();
+      }
+    }));
+
+    stopButtons.forEach(btn => btn.addEventListener('click', () => {
+      stopAutoSlide();
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    }));
+
+    // Pause timers naturally if native input scroll shifts the element frame
+    track.addEventListener('touchstart', stopAutoSlide, { passive: true });
+    track.addEventListener('wheel', stopAutoSlide, { passive: true });
+
+    // Bootstrap initial execution
+    startAutoSlide();
+  }
+</script>
