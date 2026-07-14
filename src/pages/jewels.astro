@@ -21,7 +21,7 @@ const jewels: Jewel[] = [
     name: "Charles Henry Chapman",
     title: "The Educator",
     bio: "Chapman entered higher education as a professor of Agriculture at FAMU. A beloved educator, he was instrumental in early organization and served as the first chairman of the Committees on Initiation and Organization.",
-    legacy: "Legacy",
+    legacy: "He is widely remembered as the first Jewel to pass on to the Omega Chapter.",
     image: "/jewels/CHC.png"
   },
   {
@@ -102,6 +102,9 @@ const jewels: Jewel[] = [
                         ΑΦΑ
                       </div>
                     )}
+                    <div class="absolute top-4 left-4 bg-alpha-black px-3 py-1 border border-alpha-gold-400/30 z-10">
+                      <span class="text-alpha-gold-300 font-serif text-sm">Jewel {index + 1} of 7</span>
+                    </div>
                   </div>
                 </div>
 
@@ -122,7 +125,7 @@ const jewels: Jewel[] = [
                     </p>
                     
                     <blockquote class="mt-6 border-l-2 border-alpha-gold-400 pl-4 py-1 bg-alpha-black/[0.02]">
-                     <p class="text-xs font-medium text-alpha-black italic">
+                      <p class="text-xs font-medium text-alpha-black italic">
                         <span class="font-bold uppercase text-[0.6rem] tracking-wider text-alpha-gold-400 block not-italic mb-0.5">Historic Note</span>
                         "{jewel.legacy}"
                       </p>
@@ -132,15 +135,14 @@ const jewels: Jewel[] = [
                   {/* Operational Management Row inside the info panel */}
                   <div class="mt-8 pt-4 border-t border-alpha-black/5 flex items-center justify-between">
                     
-                    <div class="flex items-center space-x-3 text-alpha-ink/60">
-                      <span class="text-alpha-black/10">|</span>
+                    <div class="flex items-center space-x-3">
                       <button 
-                        class="toggle-playback-btn flex items-center gap-1.5 text-[11px] uppercase font-medium tracking-wider text-alpha-gold-400 transition"
+                        class="toggle-playback-btn flex items-center gap-1.5 text-[11px] uppercase font-medium tracking-wider text-alpha-gold-400 transition hover:opacity-80"
                         title="Toggle Auto Advance"
-                        >
-                        <span class="play-icon text-xs block">▶▶</span> 
-                        <span class="play-text">Autoplay</span>
-                        </button>
+                      >
+                        <span class="play-icon text-xs block">❚❚</span> 
+                        <span class="play-text font-bold">Pause</span>
+                      </button>
                     </div>
 
                     {/* Step Arrows */}
@@ -186,7 +188,6 @@ const jewels: Jewel[] = [
   const prevButtons = document.querySelectorAll('.prev-btn');
   const nextButtons = document.querySelectorAll('.next-btn');
   const toggleButtons = document.querySelectorAll('.toggle-playback-btn');
-  const stopButtons = document.querySelectorAll('.stop-playback-btn');
 
   if (track) {
     const gap = 24;
@@ -217,14 +218,23 @@ const jewels: Jewel[] = [
       }
     };
 
-    // State management rendering updates to all matching components
-    // State management rendering updates to all matching components
+    // Keep UI components cleanly updated
     const updateUIState = () => {
       toggleButtons.forEach(btn => {
         const icon = btn.querySelector('.play-icon');
         const text = btn.querySelector('.play-text');
-        if (icon) icon.textContent = isPlaying ? '❚❚' : '▶▶';
-        if (text) text.textContent = isPlaying ? 'Pause' : 'Autoplay';
+        
+        if (isPlaying) {
+          btn.classList.remove('text-alpha-ink/60');
+          btn.classList.add('text-alpha-gold-400');
+          if (icon) icon.textContent = '❚❚';
+          if (text) text.textContent = 'Pause';
+        } else {
+          btn.classList.remove('text-alpha-gold-400');
+          btn.classList.add('text-alpha-ink/60');
+          if (icon) icon.textContent = '▶▶';
+          if (text) text.textContent = 'Stopped';
+        }
       });
     };
     
@@ -245,17 +255,19 @@ const jewels: Jewel[] = [
       }
     };
 
-    // Global Click Listeners across duplicate layout slides
+    // Next button
     nextButtons.forEach(btn => btn.addEventListener('click', () => {
       stopAutoSlide();
       slideNext();
     }));
 
+    // Previous button
     prevButtons.forEach(btn => btn.addEventListener('click', () => {
       stopAutoSlide();
       slidePrev();
     }));
 
+    // Play/Pause Playback Toggle
     toggleButtons.forEach(btn => btn.addEventListener('click', () => {
       if (isPlaying) {
         stopAutoSlide();
@@ -264,16 +276,11 @@ const jewels: Jewel[] = [
       }
     }));
 
-    stopButtons.forEach(btn => btn.addEventListener('click', () => {
-      stopAutoSlide();
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    }));
-
-    // Pause timers naturally if native input scroll shifts the element frame
+    // Stop tracking when human input (swipe/wheel) is detected
     track.addEventListener('touchstart', stopAutoSlide, { passive: true });
     track.addEventListener('wheel', stopAutoSlide, { passive: true });
 
-    // Bootstrap initial execution
+    // Boot play state immediately
     startAutoSlide();
   }
 </script>
