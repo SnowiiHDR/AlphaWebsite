@@ -227,9 +227,7 @@ const jewels: Jewel[] = [
         if (text) text.textContent = isPlaying ? 'Pause' : 'Autoplay';
       });
     };
-
-    const startAutoSlide = () => {
-
+    
     const startAutoSlide = () => {
       if (!autoSlideInterval) {
         autoSlideInterval = window.setInterval(slideNext, 5000);
