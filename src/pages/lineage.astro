@@ -1,0 +1,102 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { chapterLineage } from "@/data/lineage";
+---
+
+<Layout
+  title="Lineage — The Alpha Chapter"
+  description="The line history and crossing classes of Alpha Chapter of Alpha Phi Alpha Fraternity, Inc."
+>
+  <section class="bg-alpha-black text-alpha-cream">
+    <div class="container-wide py-12 sm:py-16">
+      <p class="eyebrow text-alpha-gold-300">History & Heritage</p>
+      <h1 class="mt-3 max-w-4xl font-serif text-3xl leading-tight sm:text-5xl lg:text-6xl">
+        Chapter Lineage.
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-alpha-cream py-12 sm:py-16">
+    <div class="container-wide max-w-4xl space-y-4">
+      {
+        chapterLineage.map((line) => (
+          <details 
+            name="lineage-accordion"
+            class="accordion-item group border border-alpha-black/10 bg-white transition-all duration-200 hover:border-alpha-gold-400"
+          >
+            {/* Clickable Accordion Header */}
+            <summary class="flex cursor-pointer items-center justify-between p-4 sm:p-5 select-none">
+              <div>
+                <span class="font-serif text-xl sm:text-2xl text-alpha-black">
+                  {line.season} {line.year}
+                </span>
+                {line.lineName && (
+                  <span class="ml-3 font-sans text-xs tracking-wider uppercase font-semibold text-alpha-gold-400">
+                    &bull; {line.lineName}
+                  </span>
+                )}
+              </div>
+              <span class="text-xs text-alpha-ink/60 transition-transform duration-300 group-open:rotate-180">
+                ▼
+              </span>
+            </summary>
+
+            {/* Grid Outer Container (Animates Grid Rows) */}
+            <div class="accordion-grid border-t border-alpha-black/5">
+              {/* Overflow Hidden Wrapper (Required for Grid Transition) */}
+              <div class="overflow-hidden">
+                <div class="p-4 sm:p-5 pt-4">
+                  <div class="flex flex-col md:flex-row gap-6 items-start">
+                    
+                    {/* Image Section (Left) */}
+                    {line.image && (
+                      <div class="w-full md:w-1/2 flex-shrink-0">
+                        <img
+                          src={line.image}
+                          alt={`${line.season} ${line.year} Line Photo`}
+                          class="w-full h-auto max-h-72 rounded object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
+                    {/* Names Section (Right) */}
+                    <div class="w-full flex-1">
+                      <ul class="divide-y divide-alpha-black/5">
+                        {line.brothers.map((brother) => (
+                          <li class="flex items-center gap-2 py-2 text-sm text-alpha-black">
+                            <span class="font-medium">{brother.name}</span>
+                            {brother.lineName && (
+                              <span class="text-xs italic text-alpha-ink/60">
+                                "{brother.lineName}"
+                              </span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* CSS Grid Animation */
+  .accordion-grid {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+  }
+
+  /* Expand Grid Row when parent details is open */
+  details[open] .accordion-grid {
+    grid-template-rows: 1fr;
+  }
+</style>
