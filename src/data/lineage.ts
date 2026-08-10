@@ -206,7 +206,6 @@ export const chapterLineage: ChapterLine[] = [
       {  name: "Asa Craig"},
       {  name: "Robert Davis"},
       {  name: "Kemar Trowers" },
-      {  name: "Rodney Jean" },
       {  name: "Clifford Dawkins" },
       {  name: "Antonio James" },
     ],

@@ -62,18 +62,59 @@ import { chapterLineage } from "@/data/lineage";
 
                     {/* Names Section (Right) */}
                     <div class="w-full flex-1">
-                      <ul class="divide-y divide-alpha-black/5">
-                        {line.brothers.map((brother) => (
-                          <li class="flex items-center gap-2 py-2 text-sm text-alpha-black">
-                            <span class="font-medium">{brother.name}</span>
-                            {brother.lineName && (
-                              <span class="text-xs italic text-alpha-ink/60">
-                                "{brother.lineName}"
-                              </span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
+                      {
+                        line.brothers.length > 8 ? (() => {
+                          const half = Math.ceil(line.brothers.length / 2);
+                          const col1 = line.brothers.slice(0, half);
+                          const col2 = line.brothers.slice(half);
+
+                          return (
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                              {/* Column 1 (Items 1 to half) */}
+                              <ul class="divide-y divide-alpha-black/5">
+                                {col1.map((brother, i) => (
+                                  <li class="flex items-center gap-2 py-2 text-sm text-alpha-black">
+                                    <span class="font-medium">{brother.name}</span>
+                                    {brother.lineName && (
+                                      <span class="text-xs italic text-alpha-ink/60">
+                                        "{brother.lineName}"
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
+
+                              {/* Column 2 (Items half+1 to end) */}
+                              <ul class="divide-y divide-alpha-black/5">
+                                {col2.map((brother, i) => (
+                                  <li class="flex items-center gap-2 py-2 text-sm text-alpha-black">
+                                    <span class="font-medium">{brother.name}</span>
+                                    {brother.lineName && (
+                                      <span class="text-xs italic text-alpha-ink/60">
+                                        "{brother.lineName}"
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          );
+                        })() : (
+                          /* Single column layout for 8 or fewer names */
+                          <ul class="divide-y divide-alpha-black/5">
+                            {line.brothers.map((brother, index) => (
+                              <li class="flex items-center gap-2 py-2 text-sm text-alpha-black">
+                                <span class="font-medium">{brother.name}</span>
+                                {brother.lineName && (
+                                  <span class="text-xs italic text-alpha-ink/60">
+                                    "{brother.lineName}"
+                                  </span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        )
+                      }
                     </div>
 
                   </div>
